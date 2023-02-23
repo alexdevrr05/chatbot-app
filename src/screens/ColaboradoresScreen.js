@@ -1,12 +1,12 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-const Page3Screen = () => {
+const ColaboradoresScreen = () => {
   return (
     <View>
-      <Text>Page3Screen</Text>
+      <Text>ColaboradoresScreen</Text>
     </View>
   );
 };
 
-export default Page3Screen;
+export default ColaboradoresScreen;
