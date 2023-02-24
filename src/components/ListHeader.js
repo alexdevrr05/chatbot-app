@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { styles } from '../themes/appTheme.js';
+import { colors, styles } from '../themes/appTheme.js';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const ListHeader = ({ title, color = '#ee6c4d' }) => {
+const ListHeader = ({ title, color = colors.primaryColor }) => {
   const { top } = useSafeAreaInsets();
 
   return (

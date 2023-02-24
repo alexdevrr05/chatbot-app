@@ -3,52 +3,52 @@ export const menuItems = [
   {
     name: 'Colaboradores',
     component: 'ColaboradoresScreen',
-    icon: 'cube-outline',
+    icon: 'ribbon-outline',
   },
   {
     name: 'Concursos',
     component: 'ConcursosScreen',
-    icon: 'earth-outline',
+    icon: 'laptop-outline',
   },
   {
     name: 'Conferencias',
     component: 'ConferenciasScreen',
-    icon: 'beer-outline',
+    icon: 'mic-outline',
   },
   {
     name: 'Espacios asignados',
     component: 'EspaciosAsignadosScreen',
-    icon: 'man-outline',
+    icon: 'hand-left-outline',
   },
   {
     name: 'Eventos',
     component: 'EventosScreen',
-    icon: 'browsers-outline',
+    icon: 'cube-outline',
   },
   {
     name: 'Participantes',
     component: 'ParticipantesScreen',
-    icon: 'planet-outline',
+    icon: 'happy-outline',
   },
   {
     name: 'Presentadores',
     component: 'PresentadoresScreen',
-    icon: 'color-palette-outline',
+    icon: 'man-outline',
   },
   {
     name: 'Talleres',
     component: 'TalleresScreen',
-    icon: 'fast-food-outline',
+    icon: 'hammer-outline',
   },
   {
     name: 'Usuarios',
     component: 'UsuariosScreen',
-    icon: 'flame-outline',
+    icon: 'people-outline',
   },
   {
     name: 'Asignación de concursos',
     component: 'AsignaConcursosScreen',
-    icon: 'hammer-outline',
+    icon: 'create-outline',
   },
   {
     name: 'Asig. de talleres de conferencias',
@@ -58,6 +58,6 @@ export const menuItems = [
   {
     name: 'Asignación de tallers',
     component: 'AsignaTallScreen',
-    icon: 'mail-outline',
+    icon: 'brush-outline',
   },
 ];
