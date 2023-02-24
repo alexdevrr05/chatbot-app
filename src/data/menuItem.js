@@ -16,7 +16,7 @@ export const menuItems = [
     icon: 'beer-outline',
   },
   {
-    name: 'EspaciosAsignados',
+    name: 'Espacios asignados',
     component: 'EspaciosAsignadosScreen',
     icon: 'man-outline',
   },
@@ -51,7 +51,7 @@ export const menuItems = [
     icon: 'hammer-outline',
   },
   {
-    name: 'Asignación de talleres de conferencias',
+    name: 'Asig. de talleres de conferencias',
     component: 'AsignaTallConfScreen',
     icon: 'library-outline',
   },
