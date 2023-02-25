@@ -68,4 +68,20 @@ export const globalStyles = StyleSheet.create({
     height: 35,
     marginBottom: 5,
   },
+
+  button: {
+    backgroundColor: '#2196F3',
+    borderRadius: 5,
+    marginTop: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    padding: 15,
+  },
+  
+  buttonText: {
+    color: '#fff',
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
+
 });
