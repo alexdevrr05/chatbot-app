@@ -7,7 +7,7 @@ const ParticipantesScreen = () => {
   const { top } = useSafeAreaInsets();
   return (
     <View style={{ marginTop: top + 20 }}>
-      <Text>ParticipantesScreen</Text>
+      <Text>TODO ISMA</Text>
     </View>
   );
 };
