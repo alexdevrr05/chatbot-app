@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
+import { colors } from '../themes/appTheme';
 const { width, height } = Dimensions.get('window');
 
 export const SIZES = {
@@ -69,19 +70,48 @@ export const globalStyles = StyleSheet.create({
     marginBottom: 5,
   },
 
-  button: {
-    backgroundColor: '#2196F3',
-    borderRadius: 5,
-    marginTop: 20,
-    marginLeft: 20,
-    marginRight: 20,
-    padding: 15,
-  },
-  
+  // button: {
+  //   backgroundColor: '#2196F3',
+  //   padding: 15,
+  //   borderRadius: 5,
+  //   marginTop: 20,
+  //   marginLeft: 20,
+  //   marginRight: 20,
+  // },
+
   buttonText: {
     color: '#fff',
     textAlign: 'center',
     fontWeight: 'bold',
   },
+
+  buttonEnable: {
+    backgroundColor: '#2196F3',
+    padding: 15,
+    borderRadius: 5,
+    marginTop: 20,
+    marginLeft: 20,
+    marginRight: 20,
+  },
+
+  buttonDisable: {
+    backgroundColor: '#B0C4DE',
+    padding: 15,
+    borderRadius: 5,
+    marginTop: 20,
+    marginLeft: 20,
+    marginRight: 20,
+  },
+
+  input: {
+    borderWidth: 1.5,
+    borderColor: colors.blueDark,
+    height: 'auto',
+    borderRadius: 4,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    marginVertical: 10,
+    backgroundColor: 'white',
+  }
 
 });
