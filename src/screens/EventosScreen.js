@@ -7,7 +7,7 @@ const EventosScreen = () => {
   const { top } = useSafeAreaInsets();
   return (
     <View style={{ marginTop: top + 20 }}>
-      <Text>EventosScreen</Text>
+      <Text> TODO ISMA</Text>
     </View>
   );
 };

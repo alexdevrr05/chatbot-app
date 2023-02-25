@@ -103,6 +103,12 @@ export const globalStyles = StyleSheet.create({
     marginRight: 20,
   },
 
+  h1: {
+    fontWeight: 'bold',
+    fontSize: 26,
+    marginVertical: 15
+  },
+
   input: {
     borderWidth: 1.5,
     borderColor: colors.blueDark,
