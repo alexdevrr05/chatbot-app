@@ -22,17 +22,17 @@ const AsignaConcursosScreen = ({ navigation }) => {
   const [showError, setShowError] = useState('');
 
   const { onChange, onReset, statecurrent } = useForm({
-    acesor: '',
+    asesor: '',
     clave: '',
     concursoId: '',
     participanteId: '',
     rol: '',
   });
-  const { rol, participanteId, concursoId, clave, acesor } = statecurrent;
+  const { rol, participanteId, concursoId, clave, asesor } = statecurrent;
 
   const isValidFields = () => {
     if (
-      acesor === '' ||
+      asesor === '' ||
       clave === '' ||
       concursoId === '' ||
       participanteId === '' ||
@@ -74,11 +74,11 @@ const AsignaConcursosScreen = ({ navigation }) => {
             </Text>
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
-              onChangeText={(value) => onChange(value, 'acesor')}
-              placeholder='Acesor'
+              onChangeText={(value) => onChange(value, 'asesor')}
+              placeholder='asesor'
               placeholderTextColor='gray'
               autoCorrect={false}
-              value={acesor}
+              value={asesor}
               autoCapitalize='none'
               keyboardType='text'
             />

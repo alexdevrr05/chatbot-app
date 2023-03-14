@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "chatbot-app",
-    "slug": "chatbot-app",
+    "slug": "chat-bot-tec",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,10 +24,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.alexdevrr05.chatbottec"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1700f996-e0d8-4f5e-9686-81b6a17d8e68"
+      }
+    },
+    "owner": "alexdevrr05"
   }
 }

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/core';
+//import { useNavigation } from '@react-navigation/core';
+import { useNavigation } from "@react-navigation/native";
+
 import { colors } from '../themes/appTheme.js';
 
 const FlatListMenuItem = ({ menuItem }) => {
@@ -10,8 +12,8 @@ const FlatListMenuItem = ({ menuItem }) => {
 
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate(menuItem.component)}
-      activeOpacity={0.7}
+    onPress={() => navigation.navigate(menuItem.component)}
+    activeOpacity={0.7}
     >
       <View style={styles.container}>
         <View style={styles.containerTextAndIcon}>
