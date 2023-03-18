@@ -147,5 +147,26 @@ export const globalStyles = StyleSheet.create({
     backgroundColor: 'white',
     borderWidth: '.5px',
     borderColor: 'rgb(211, 211, 211)',
+    borderRadius: 4,
+    marginBottom: 4,
+  },
+
+  textInDates: {
+    color: 'gray',
+    position: 'absolute',
+    zIndex: 999,
+    paddingLeft: 15,
+    top: 15,
+    fontSize: 10,
+  },
+
+  textInDatesIos: {
+    color: 'gray',
+    position: 'absolute',
+    zIndex: 999,
+    right: 1,
+    paddingRight: 10,
+    top: 15,
+    fontSize: 10,
   },
 });

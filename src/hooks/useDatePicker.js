@@ -3,6 +3,7 @@ import { Platform } from 'react-native';
 
 const useDatePicker = () => {
   const [date, setDate] = useState(new Date());
+  const [dateEnd, setEndDate] = useState(new Date(1598051730000));
   const [mode, setMode] = useState('date');
   const [showModalDatePicker, setShowModalDatePicker] = useState(false);
   const [showModalDatePickerIos, setShowModalDatePickerIos] = useState(false);
@@ -33,13 +34,17 @@ const useDatePicker = () => {
     showMode('date');
   };
 
+  const localizedFormatWithoutTime = new Date(date).toLocaleDateString();
+
   return {
-    onChangeDate,
-    showDatepicker,
+    dateEnd,
+    date,
+    localizedFormatWithoutTime,
+    mode,
     showModalDatePicker,
     showModalDatePickerIos,
-    mode,
-    date,
+    onChangeDate,
+    showDatepicker,
   };
 };
 

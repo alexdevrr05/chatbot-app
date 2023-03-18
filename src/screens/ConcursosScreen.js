@@ -1,16 +1,8 @@
+import DatePicker from '../components/DatePicker';
 import CustomButton from '../components/CustomButton';
-import DateTimePicker from '@react-native-community/datetimepicker';
 import useDatePicker from '../hooks/useDatePicker';
 
-import {
-  ScrollView,
-  Text,
-  TextInput,
-  View,
-  Platform,
-  Button,
-  TouchableOpacity,
-} from 'react-native';
+import { ScrollView, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { globalStyles } from '../constants/theme';
 import { useForm } from '../hooks/useForm';
@@ -18,14 +10,7 @@ import { useForm } from '../hooks/useForm';
 const ConcursosScreen = () => {
   const { top } = useSafeAreaInsets();
 
-  const {
-    onChangeDate,
-    showDatepicker,
-    showModalDatePicker,
-    showModalDatePickerIos,
-    mode,
-    date,
-  } = useDatePicker();
+  const { date } = useDatePicker();
 
   const { onChange, onReset, statecurrent } = useForm({
     conClave: '',
@@ -85,8 +70,6 @@ const ConcursosScreen = () => {
       eveClave: '',
     });
   };
-
-  const localizedFormatWithoutTime = new Date(date).toLocaleDateString();
 
   return (
     <ScrollView>
@@ -148,50 +131,8 @@ const ConcursosScreen = () => {
           keyboardType='text'
         />
 
-        {Platform.OS === 'android' && (
-          <TouchableOpacity onPress={showDatepicker} activeOpacity={0.7}>
-            <TextInput
-              onChangeText={(value) => onChange(value, 'date')}
-              value={localizedFormatWithoutTime}
-              style={{
-                ...globalStyles.input,
-                color: 'black',
-              }}
-              placeholderTextColor='gray'
-              editable={false}
-            />
-          </TouchableOpacity>
-        )}
-
-        {showModalDatePicker && (
-          <DateTimePicker
-            testID='dateTimePicker'
-            value={date}
-            mode={mode}
-            is24Hour={true}
-            onChange={onChangeDate}
-          />
-        )}
-
-        {Platform.OS === 'ios' && (
-          <View style={{ ...globalStyles.dataPickerContainer }}>
-            <Button
-              onPress={showDatepicker}
-              title={'Fecha:' + localizedFormatWithoutTime}
-              color='gray'
-            />
-            {showModalDatePickerIos && (
-              <DateTimePicker
-                testID='dateTimePicker'
-                value={date}
-                mode={mode}
-                is24Hour={true}
-                onChange={onChangeDate}
-                display='inline'
-              />
-            )}
-          </View>
-        )}
+        {/* Campo de fecha */}
+        <DatePicker />
 
         <TextInput
           onChangeText={(value) => onChange(value, 'zone')}
