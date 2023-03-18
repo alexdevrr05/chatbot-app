@@ -1,71 +1,78 @@
-import React from 'react';
-
 import {
-  View,
-  Text,
   KeyboardAvoidingView,
-  TouchableWithoutFeedback,
   Platform,
-  TextInput
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableWithoutFeedback,
+  View,
 } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import CustomButton from '../components/CustomButton';
+
 import { globalStyles } from '../constants/theme';
 import { useForm } from '../hooks/useForm';
-import CustomDropdown from "../components/Dropdown";
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+import CustomButton from '../components/CustomButton';
+import CustomDropdown from '../components/Dropdown';
+import DatePicker from '../components/DatePicker';
+import useDatePicker from '../hooks/useDatePicker';
 
 const listStatus = [
-  {label: 'Activo', value: 1},
-  {label: 'En proceso', value: 2},
-  {label: 'Inactivo', value: 3},
-  {label: 'Finalizado', value: 4},
+  { label: 'Activo', value: 1 },
+  { label: 'En proceso', value: 2 },
+  { label: 'Inactivo', value: 3 },
+  { label: 'Finalizado', value: 4 },
 ];
 
 const EventosScreen = () => {
-  
   const { top } = useSafeAreaInsets();
 
-  const {onChange, onReset, statecurrent} = useForm({
+  const { date } = useDatePicker();
+
+  const { onChange, onReset, statecurrent } = useForm({
     clave: '',
     description: '',
     status: '',
-    dateStart: '',
-    dateEnd: ''
+    date: '',
   });
 
-  const {
-    clave,
-    description,
-    status,
-    dateStart,
-    dateEnd
-  } = statecurrent;
+  const { clave, description, status } = statecurrent;
 
   const isValidFields = () => {
     if (
       clave === '' ||
       description === '' ||
       status === '' ||
-      dateStart === '' ||   
-      dateEnd === ''
-    ) return false;
+      date === ''
+      // dateEnd === ''
+    )
+      return false;
     return true;
-  }
+  };
+
+  const addEvent = () => {
+    console.log({
+      date,
+      // dateEnd,
+      status,
+      description,
+      clave,
+    });
+  };
 
   return (
     <ScrollView>
       <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      >
         <TouchableWithoutFeedback>
           <View style={{ marginTop: top + 20, marginHorizontal: 20 }}>
-            
             <Text style={globalStyles.h1}> Eventos </Text>
-            
-            <TextInput 
+
+            <TextInput
               onChangeText={(value) => onChange(value, 'clave')}
-              value={clave}      
-              style={{...globalStyles.input}}
+              value={clave}
+              style={{ ...globalStyles.input }}
               placeholder='Clave'
               placeholderTextColor='gray'
               autoCorrect={false}
@@ -73,10 +80,10 @@ const EventosScreen = () => {
               keyboardType='numeric'
             />
 
-            <TextInput 
+            <TextInput
               onChangeText={(value) => onChange(value, 'description')}
-              value={description}      
-              style={{...globalStyles.input}}
+              value={description}
+              style={{ ...globalStyles.input }}
               placeholder='Descriptión'
               placeholderTextColor='gray'
               autoCorrect={false}
@@ -85,32 +92,34 @@ const EventosScreen = () => {
             />
 
             <CustomDropdown
-                Placeholder='Status'
-                Data={listStatus}
-                OnChange={onChange} TagChange='status'/>
-
-            <TextInput 
-              onChangeText={(value) => onChange(value, 'dateStart')}
-              value={dateStart}      
-              style={{...globalStyles.input}}
-              placeholder='Fecha de inicio'
-              placeholderTextColor='gray'
-              autoCorrect={false}
-              autoCapitalize='none'
-              keyboardType='text'
+              Placeholder='Status'
+              Data={listStatus}
+              OnChange={onChange}
+              TagChange='status'
             />
 
-            <TextInput 
+            {/* Campo de fecha */}
+            <DatePicker />
+
+            {/* Campo de fecha fin */}
+            <DatePicker isEndDate={true} />
+
+            {/* <TextInput
               onChangeText={(value) => onChange(value, 'dateEnd')}
               value={dateEnd}
-              style={{...globalStyles.input}}
+              style={{ ...globalStyles.input }}
               placeholder='Fecha de finalización'
               placeholderTextColor='gray'
               autoCorrect={false}
               autoCapitalize='none'
               keyboardType='text'
+            /> */}
+
+            <CustomButton
+              enable={!isValidFields()}
+              text='Crear evento'
+              handleOnPress={() => addEvent()}
             />
-            <CustomButton enable={!isValidFields()} text='Crear evento'/>
           </View>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>

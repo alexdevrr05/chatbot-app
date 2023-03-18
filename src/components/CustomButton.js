@@ -4,10 +4,10 @@ import { TouchableOpacity, Text } from "react-native";
 import { globalStyles } from "../constants/theme";
 
 const CustomButton = (props) => {
-
     return (
         <TouchableOpacity 
             disabled={props.enable}
+            onPress={props.handleOnPress}
             style={
                 props.enable ? globalStyles.buttonDisable : globalStyles.buttonEnable
             }

@@ -16,6 +16,7 @@ import { globalStyles } from '../constants/theme';
 import { useForm } from '../hooks/useForm';
 
 import CustomButton from '../components/CustomButton';
+import DatePicker from '../components/DatePicker';
 
 const TalleresScreen = ({ navigation }) => {
   const { top } = useSafeAreaInsets();
@@ -39,8 +40,6 @@ const TalleresScreen = ({ navigation }) => {
     talCupo,
     talDias,
     talStatus,
-    talFechaInico,
-    talFechaFin,
     talHorario,
   } = statecurrent;
 
@@ -52,8 +51,6 @@ const TalleresScreen = ({ navigation }) => {
       talCupo === '' ||
       talDias === '' ||
       talStatus === '' ||
-      talFechaInico === '' ||
-      talFechaFin === '' ||
       talHorario === ''
     )
       return false;
@@ -149,26 +146,12 @@ const TalleresScreen = ({ navigation }) => {
               autoCapitalize='none'
               keyboardType='text'
             />
-            <TextInput
-              style={{ ...globalStyles.input, color: 'black' }}
-              onChangeText={(value) => onChange(value, 'talFechaInico')}
-              placeholder='FechaInico'
-              placeholderTextColor='gray'
-              autoCorrect={false}
-              value={talFechaInico}
-              autoCapitalize='none'
-              keyboardType='text'
-            />
-            <TextInput
-              style={{ ...globalStyles.input, color: 'black' }}
-              onChangeText={(value) => onChange(value, 'talFechaFin')}
-              placeholder='FechaFin'
-              placeholderTextColor='gray'
-              autoCorrect={false}
-              value={talFechaFin}
-              autoCapitalize='none'
-              keyboardType='text'
-            />
+
+            {/* Campo de fecha */}
+            <DatePicker />
+
+            {/* Campo de fecha fin */}
+            <DatePicker isEndDate={true} />
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'talHorario')}
