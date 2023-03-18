@@ -9,8 +9,10 @@ const CustomSlider = ({Label, OnChange, TagChange}) => {
     const [value, setValue] = useState(0);
 
     return (
-        <View style={globalStyles.input}>
-            <Text> {Label}: {value} minutos</Text>
+        <View style={globalStyles.slider}>
+            <Text style={globalStyles.sliderText}>
+                {Label}: {value} minutos
+            </Text>
             <Slider
                 step={5}
                 minimumValue={0}
