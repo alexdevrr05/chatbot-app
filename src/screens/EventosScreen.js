@@ -1,11 +1,26 @@
 import React from 'react';
 
-import { View, Text, KeyboardAvoidingView, TouchableWithoutFeedback, Platform, TextInput } from 'react-native';
+import {
+  View,
+  Text,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Platform,
+  TextInput
+} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import CustomButton from '../components/CustomButton';
 import { globalStyles } from '../constants/theme';
 import { useForm } from '../hooks/useForm';
+import CustomDropdown from "../components/Dropdown";
+
+const listStatus = [
+  {label: 'Activo', value: 1},
+  {label: 'En proceso', value: 2},
+  {label: 'Inactivo', value: 3},
+  {label: 'Finalizado', value: 4},
+];
 
 const EventosScreen = () => {
   
@@ -69,16 +84,10 @@ const EventosScreen = () => {
               keyboardType='text'
             />
 
-            <TextInput 
-              onChangeText={(value) => onChange(value, 'status')}
-              value={status}      
-              style={{...globalStyles.input}}
-              placeholder='Status'
-              placeholderTextColor='gray'
-              autoCorrect={false}
-              autoCapitalize='none'
-              keyboardType='text'
-            />
+            <CustomDropdown
+                Placeholder='Status'
+                Data={listStatus}
+                OnChange={onChange} TagChange='status'/>
 
             <TextInput 
               onChangeText={(value) => onChange(value, 'dateStart')}

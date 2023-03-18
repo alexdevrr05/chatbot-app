@@ -110,14 +110,36 @@ export const globalStyles = StyleSheet.create({
   },
 
   input: {
-    borderWidth: 1.5,
-    borderColor: colors.blueDark,
+    borderWidth: 1,
+    borderColor: '#D3D3D3',
     height: 'auto',
     borderRadius: 4,
     paddingVertical: 10,
     paddingHorizontal: 15,
     marginVertical: 10,
     backgroundColor: 'white',
-  }
+  },
 
+  dropdown: {
+    backgroundColor: 'white',
+    height: 50,
+    borderColor: 'gray',
+    borderWidth: 0.5,
+    borderRadius: 8,
+    paddingHorizontal: 8,
+    marginVertical: 8,
+  },
+
+  dropdownPlaceholderStyle: {
+    fontSize: 16,
+  },
+
+  slider:{
+    borderWidth: 1,
+    borderColor: '#D3D3D3',
+    height: 'auto',
+    borderRadius: 4,
+    paddingVertical: 10,
+    backgroundColor: 'white',
+  }
 });

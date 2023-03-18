@@ -17,7 +17,18 @@ import { useForm } from '../hooks/useForm';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useState } from 'react';
 import { colors } from '../themes/appTheme';
+import CustomDropdown from "../components/Dropdown";
 
+const listRoles = [
+  {label: 'Profesor', value: 1},
+  {label: 'Asistente', value: 2},
+  {label: 'Administrativo', value: 3},
+  {label: 'Operativo', value: 4},
+  {label: 'Jefe de division', value: 5},
+  {label: 'Invitado', value: 6},
+  {label: 'Proveedor', value: 7},
+  {label: 'Ejecutivo', value: 8},
+];
 const ColaboradoresScreen = ({ navigation }) => {
   const { top } = useSafeAreaInsets();
   // const dispatch = useDispatch();
@@ -161,6 +172,13 @@ const ColaboradoresScreen = ({ navigation }) => {
               autoCapitalize='none'
               keyboardType='numeric'
             />
+
+            <CustomDropdown
+                Placeholder='Rol'
+                Data={listRoles}
+                OnChange={onChange}
+                TagChange='rol1'/>
+
             <TextInput
               style={{ ...styles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'rol1')}

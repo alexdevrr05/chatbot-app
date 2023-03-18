@@ -6,7 +6,31 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import CustomButton from '../components/CustomButton';
 import { globalStyles } from '../constants/theme';
 import { useForm } from '../hooks/useForm';
+import CustomDropdown from "../components/Dropdown";
+import CustomSlider from "../components/Slider";
 
+const listConferenceSites = [
+  {label: 'Audiovisual', value: 1},
+  {label: 'Edificio E', value: 2},
+  {label: 'Explanada A', value: 3},
+  {label: 'Explanada B', value: 4},
+  {label: 'Jardines B', value: 5},
+];
+
+const listSpeakers = [
+  {label: 'Martin Villalobos', value: 1},
+  {label: 'Eduardo Estrada', value: 2},
+  {label: 'Alex Ramirez', value: 3},
+  {label: 'Ismael Romero', value: 4},
+  {label: 'Pendiente', value: 5},
+];
+
+const listStatus = [
+  {label: 'Activo', value: 1},
+  {label: 'En proceso', value: 2},
+  {label: 'Inactivo', value: 3},
+  {label: 'Finalizado', value: 4},
+];
 const ConferenciasScreen = () => {
   const { top } = useSafeAreaInsets();
 
@@ -51,7 +75,7 @@ const ConferenciasScreen = () => {
 
   return (
     <ScrollView>
-      <KeyboardAvoidingView
+      <KeyboardAvoidingView style={{paddingBottom: 40}}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
             <View style={{ marginTop: top + 20, marginHorizontal: 20 }}>
@@ -89,30 +113,32 @@ const ConferenciasScreen = () => {
                 autoCorrect={false}
                 autoCapitalize='none'
                 keyboardType='text'
-              />    
+              />
+
+              {/*TODO> SLIDER*/}
+              <CustomSlider
+                  Label='Duración'
+                  OnChange={onChange}
+                  TagChange='duration'/>
 
               <TextInput
                 onChangeText={(value) => onChange(value, 'duration')}
-                value={duration}      
+                value={duration}
                 style={{...globalStyles.input}}
                 placeholder='Duración'
                 placeholderTextColor='gray'
                 autoCorrect={false}
                 autoCapitalize='none'
                 keyboardType='text'
-              />    
+              />
 
-              <TextInput
-                onChangeText={(value) => onChange(value, 'status')}
-                value={status}      
-                style={{...globalStyles.input}}
-                placeholder='Status'
-                placeholderTextColor='gray'
-                autoCorrect={false}
-                autoCapitalize='none'
-                keyboardType='text'
-              />    
+              <CustomDropdown
+                  Placeholder='Status de la conferencia'
+                  Data={listStatus}
+                  OnChange={onChange}
+                  TagChange='status'/>
 
+              {/*TODO> DATEPICKER*/}
               <TextInput
                 onChangeText={(value) => onChange(value, 'date')}
                 value={date}      
@@ -122,29 +148,19 @@ const ConferenciasScreen = () => {
                 autoCorrect={false}
                 autoCapitalize='none'
                 keyboardType='text'
-              />     
-
-              <TextInput
-                onChangeText={(value) => onChange(value, 'zone')}
-                value={zone}      
-                style={{...globalStyles.input}}
-                placeholder='Lugar'
-                placeholderTextColor='gray'
-                autoCorrect={false}
-                autoCapitalize='none'
-                keyboardType='text'
               />
-              
-              <TextInput
-                onChangeText={(value) => onChange(value, 'speaker')}
-                value={speaker}      
-                style={{...globalStyles.input}}
-                placeholder='Ponente'
-                placeholderTextColor='gray'
-                autoCorrect={false}
-                autoCapitalize='none'
-                keyboardType='text'
-              />   
+
+              <CustomDropdown
+                  Placeholder='Lugar de la conferencia'
+                  Data={listConferenceSites}
+                  OnChange={onChange}
+                  TagChange='zone'/>
+
+              <CustomDropdown
+                  Placeholder='Ponente'
+                  Data={listSpeakers}
+                  OnChange={onChange}
+                  TagChange='speaker'/>
 
               <TextInput
                 onChangeText={(value) => onChange(value, 'eveClave')}
