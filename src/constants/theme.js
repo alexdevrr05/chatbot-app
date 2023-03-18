@@ -172,7 +172,7 @@ export const globalStyles = StyleSheet.create({
     top: 15,
     fontSize: 10,
   },
-  
+
   sliderText: {
     color: 'gray'
   }
