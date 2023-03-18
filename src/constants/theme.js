@@ -90,8 +90,7 @@ export const globalStyles = StyleSheet.create({
     padding: 15,
     borderRadius: 5,
     marginTop: 20,
-    marginLeft: 20,
-    marginRight: 20,
+    width: '100%',
   },
 
   buttonDisable: {
@@ -99,14 +98,13 @@ export const globalStyles = StyleSheet.create({
     padding: 15,
     borderRadius: 5,
     marginTop: 20,
-    marginLeft: 20,
-    marginRight: 20,
+    width: '100%',
   },
 
   h1: {
     fontWeight: 'bold',
     fontSize: 26,
-    marginVertical: 15
+    marginVertical: 15,
   },
 
   input: {
@@ -134,12 +132,20 @@ export const globalStyles = StyleSheet.create({
     fontSize: 16,
   },
 
-  slider:{
+  slider: {
     borderWidth: 1,
     borderColor: '#D3D3D3',
     height: 'auto',
     borderRadius: 4,
     paddingVertical: 10,
     backgroundColor: 'white',
-  }
+  },
+
+  dataPickerContainer: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    backgroundColor: 'white',
+    borderWidth: '.5px',
+    borderColor: 'rgb(211, 211, 211)',
+  },
 });
