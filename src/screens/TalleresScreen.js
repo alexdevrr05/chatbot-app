@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 
 import {
+  Button,
   Keyboard,
   KeyboardAvoidingView,
+  KeyboardAvoidingViewBase,
   Platform,
+  ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
@@ -17,10 +20,13 @@ import { useForm } from '../hooks/useForm';
 
 import CustomButton from '../components/CustomButton';
 import DatePicker from '../components/DatePicker';
+import useDatePicker from '../hooks/useDatePicker';
 
 const TalleresScreen = ({ navigation }) => {
   const { top } = useSafeAreaInsets();
   const [showError, setShowError] = useState('');
+
+  const { showTimepicker } = useDatePicker();
 
   const { onChange, onReset, statecurrent } = useForm({
     talNombre: '',
@@ -31,17 +37,9 @@ const TalleresScreen = ({ navigation }) => {
     talStatus: '',
     talFechaInico: '',
     talFechaFin: '',
-    talHorario: '',
   });
-  const {
-    talNombre,
-    eveClave,
-    talClave,
-    talCupo,
-    talDias,
-    talStatus,
-    talHorario,
-  } = statecurrent;
+  const { talNombre, eveClave, talClave, talCupo, talDias, talStatus } =
+    statecurrent;
 
   const isValidFields = () => {
     if (
@@ -50,101 +48,80 @@ const TalleresScreen = ({ navigation }) => {
       talClave === '' ||
       talCupo === '' ||
       talDias === '' ||
-      talStatus === '' ||
-      talHorario === ''
+      talStatus === ''
     )
       return false;
     return true;
   };
 
   return (
-    <View
-      style={{
-        ...globalStyles.globalBackground,
-        ...globalStyles.globalMargin,
-        marginTop: top + 20,
-      }}
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={{ flex: 1 }}
     >
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View
-            style={{
-              ...globalStyles.globalMargin,
-              backgroundColor: 'white',
-              justifyContent: 'center',
-              paddingTop: 5,
-            }}
-          >
-            <Text
-              style={{
-                ...globalStyles.title,
-                fontWeight: 'bold',
-                textAlign: 'center',
-              }}
-            >
-              Talleres
-            </Text>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView>
+          <View style={{ marginTop: top + 20, marginHorizontal: 20 }}>
+            <Text style={globalStyles.h1}>Talleres</Text>
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'talNombre')}
-              placeholder='Nombre'
-              placeholderTextColor='gray'
+              placeholder="Nombre"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={talNombre}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'eveClave')}
-              placeholder='Clave'
-              placeholderTextColor='gray'
+              placeholder="Clave"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={eveClave}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'talClave')}
-              placeholder='Clave'
-              placeholderTextColor='gray'
+              placeholder="Clave"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={talClave}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'talCupo')}
-              placeholder='Cupo'
-              placeholderTextColor='gray'
+              placeholder="Cupo"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={talCupo}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'talDias')}
-              placeholder='Dias'
-              placeholderTextColor='gray'
+              placeholder="Dias"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={talDias}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'talStatus')}
-              placeholder='Status'
-              placeholderTextColor='gray'
+              placeholder="Status"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={talStatus}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
 
             {/* Campo de fecha */}
@@ -152,43 +129,16 @@ const TalleresScreen = ({ navigation }) => {
 
             {/* Campo de fecha fin */}
             <DatePicker isEndDate={true} />
-            <TextInput
-              style={{ ...globalStyles.input, color: 'black' }}
-              onChangeText={(value) => onChange(value, 'talHorario')}
-              placeholder='Horario'
-              placeholderTextColor='gray'
-              autoCorrect={false}
-              value={talHorario}
-              autoCapitalize='none'
-              keyboardType='text'
-            />
+
+            <DatePicker modeDatePicker={'time'} />
+
+            <CustomButton enable={!isValidFields()} text="Crear taller" />
           </View>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
 
-      {/* Contenedor forgot pass & signIn button */}
-      <View
-        style={{
-          ...globalStyles.globalMargin,
-          width: '100%',
-          alignItems: 'center',
-        }}
-      >
-        <Text style={{ color: 'red' }}>{showError !== '' && showError}</Text>
-
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-          <TouchableOpacity
-            disabled={!isValidFields()}
-            onPress={() =>
-              // onClickSignIn()
-              console.log('hello world from Talleres ')
-            }
-          >
-            <CustomButton enable={!isValidFields()} text='Crear taller' />
-          </TouchableOpacity>
-        </TouchableWithoutFeedback>
-      </View>
-    </View>
+          <View style={{ height: 200 }} />
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 

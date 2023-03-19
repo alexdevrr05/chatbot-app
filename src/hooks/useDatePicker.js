@@ -34,16 +34,29 @@ const useDatePicker = () => {
     showMode('date');
   };
 
+  const showTimepicker = () => {
+    showMode('time');
+  };
+
   const localizedFormatWithoutTime = new Date(date).toLocaleDateString();
+  const hour = date.getHours();
+  const minutes = date.getMinutes();
+
+  const hourFormatted =
+    hour.toString().padStart(2, '0') +
+    ':' +
+    minutes.toString().padStart(2, '0');
 
   return {
     dateEnd,
     date,
     localizedFormatWithoutTime,
+    hourFormatted,
     mode,
     showModalDatePicker,
     showModalDatePickerIos,
     onChangeDate,
+    showTimepicker,
     showDatepicker,
   };
 };
