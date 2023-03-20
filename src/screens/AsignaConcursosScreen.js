@@ -14,8 +14,43 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { globalStyles } from '../constants/theme';
 import { useForm } from '../hooks/useForm';
-
 import CustomButton from '../components/CustomButton';
+import CustomDropdown from '../components/Dropdown';
+
+const listRoles = [
+  { label: 'Profesor', value: 1 },
+  { label: 'Asistente', value: 2 },
+  { label: 'Administrativo', value: 3 },
+  { label: 'Operativo', value: 4 },
+  { label: 'Jefe de division', value: 5 },
+  { label: 'Invitado', value: 6 },
+  { label: 'Proveedor', value: 7 },
+  { label: 'Ejecutivo', value: 8 },
+];
+
+const listAsesores = [
+  { label: 'Adolfo Vazquez', value: 1},
+  { label: 'Martin Villalobos', value: 2},
+  { label: 'Romel Hernandez', value: 3},
+  { label: 'Lizbeth Martinez', value: 4},
+  { label: 'Raul Arzeta', value: 5},
+  { label: 'Gustavo Viera', value: 6},
+];
+
+const listConcurso = [
+  { label: 'Programacion', value: 1},
+  { label: 'Robotica', value: 2},
+  { label: 'Ciberseguridad', value: 3},
+  { label: 'Desarrollo Web', value: 4},
+  { label: 'Redes Neuronales', value: 5},
+];
+
+const listParticipanteId = [
+  { label: '190116417', value: 1},
+  { label: '190556321', value: 2},
+  { label: '200012365', value: 3},
+  { label: '190632121', value: 4},
+];
 
 const AsignaConcursosScreen = ({ navigation }) => {
   const { top } = useSafeAreaInsets();
@@ -72,15 +107,11 @@ const AsignaConcursosScreen = ({ navigation }) => {
             >
               Asignación de concursos
             </Text>
-            <TextInput
-              style={{ ...globalStyles.input, color: 'black' }}
-              onChangeText={(value) => onChange(value, 'asesor')}
-              placeholder='asesor'
-              placeholderTextColor='gray'
-              autoCorrect={false}
-              value={asesor}
-              autoCapitalize='none'
-              keyboardType='text'
+            <CustomDropdown
+              Placeholder='Asesor'
+              Data={listAsesores}
+              OnChange={onChange}
+              TagChange='asesor'
             />
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
@@ -92,35 +123,23 @@ const AsignaConcursosScreen = ({ navigation }) => {
               autoCapitalize='none'
               keyboardType='text'
             />
-            <TextInput
-              style={{ ...globalStyles.input, color: 'black' }}
-              onChangeText={(value) => onChange(value, 'concursoId')}
-              placeholder='ConcursoId'
-              placeholderTextColor='gray'
-              autoCorrect={false}
-              value={concursoId}
-              autoCapitalize='none'
-              keyboardType='text'
+            <CustomDropdown
+              Placeholder='Concurso'
+              Data={listConcurso}
+              OnChange={onChange}
+              TagChange='concurso'
             />
-            <TextInput
-              style={{ ...globalStyles.input, color: 'black' }}
-              onChangeText={(value) => onChange(value, 'participanteId')}
-              placeholder='ParticipanteId'
-              placeholderTextColor='gray'
-              autoCorrect={false}
-              value={participanteId}
-              autoCapitalize='none'
-              keyboardType='text'
+            <CustomDropdown
+              Placeholder='ParticipanteId'
+              Data={listParticipanteId}
+              OnChange={onChange}
+              TagChange='participanteId'
             />
-            <TextInput
-              style={{ ...globalStyles.input, color: 'black' }}
-              onChangeText={(value) => onChange(value, 'rol')}
-              placeholder='Rol'
-              placeholderTextColor='gray'
-              autoCorrect={false}
-              value={rol}
-              autoCapitalize='none'
-              keyboardType='text'
+            <CustomDropdown
+              Placeholder='Rol'
+              Data={listRoles}
+              OnChange={onChange}
+              TagChange='rol1'
             />
           </View>
         </TouchableWithoutFeedback>

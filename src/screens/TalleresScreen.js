@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
+  SliderBase,
 } from 'react-native';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -19,6 +20,7 @@ import { globalStyles } from '../constants/theme';
 import { useForm } from '../hooks/useForm';
 
 import CustomButton from '../components/CustomButton';
+import Slider from '../components/Slider'
 import DatePicker from '../components/DatePicker';
 import useDatePicker from '../hooks/useDatePicker';
 
@@ -93,15 +95,16 @@ const TalleresScreen = ({ navigation }) => {
               autoCapitalize="none"
               keyboardType="text"
             />
-            <TextInput
-              style={{ ...globalStyles.input, color: 'black' }}
-              onChangeText={(value) => onChange(value, 'talCupo')}
-              placeholder="Cupo"
-              placeholderTextColor="gray"
-              autoCorrect={false}
+            <Slider
+              style={{ width: '100%', marginTop: 20 }}
+              minimumValue={5}
+              maximumValue={100}
+              step={5}
+              minimumTrackTintColor="#007AFF"
+              maximumTrackTintColor="#007AFF"
+              thumbTintColor="#007AFF"
               value={talCupo}
-              autoCapitalize="none"
-              keyboardType="text"
+              onValueChange={(value) => onChange(value, 'talCupo')}
             />
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
