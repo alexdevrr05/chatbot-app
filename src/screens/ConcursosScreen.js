@@ -94,55 +94,62 @@ const ConcursosScreen = () => {
               onChangeText={(value) => onChange(value, 'conClave')}
               value={conClave}
               style={{ ...globalStyles.input, color: 'black' }}
-              placeholder='conClave'
-              placeholderTextColor='gray'
+              placeholder="conClav <View
+              style={{
+                ...globalStyles.globalBackground,
+                ...globalStyles.globalMargin,
+                marginTop: top + 20,
+              }}
+            >
+              e"
+              placeholderTextColor="gray"
               autoCorrect={false}
-              autoCapitalize='none'
-              keyboardType='numeric'
+              autoCapitalize="none"
+              keyboardType="numeric"
             />
 
             <TextInput
               onChangeText={(value) => onChange(value, 'description')}
               value={description}
               style={{ ...globalStyles.input, color: 'black' }}
-              placeholder='descripción'
-              placeholderTextColor='gray'
+              placeholder="descripción"
+              placeholderTextColor="gray"
               autoCorrect={false}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
 
             <TextInput
               onChangeText={(value) => onChange(value, 'duration')}
               value={duration}
               style={{ ...globalStyles.input }}
-              placeholder='duración'
-              placeholderTextColor='gray'
+              placeholder="duración"
+              placeholderTextColor="gray"
               autoCorrect={false}
-              autoCapitalize='none'
-              keyboardType='numeric'
+              autoCapitalize="none"
+              keyboardType="numeric"
             />
 
             <TextInput
               onChangeText={(value) => onChange(value, 'responsable')}
               value={responsable}
               style={{ ...globalStyles.input }}
-              placeholder='Responsable'
-              placeholderTextColor='gray'
+              placeholder="Responsable"
+              placeholderTextColor="gray"
               autoCorrect={false}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
 
             <TextInput
               onChangeText={(value) => onChange(value, 'status')}
               value={status}
               style={{ ...globalStyles.input }}
-              placeholder='Status'
-              placeholderTextColor='gray'
+              placeholder="Status"
+              placeholderTextColor="gray"
               autoCorrect={false}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
 
             {/* Campo de fecha */}
@@ -152,27 +159,27 @@ const ConcursosScreen = () => {
               onChangeText={(value) => onChange(value, 'zone')}
               value={zone}
               style={{ ...globalStyles.input }}
-              placeholder='Lugar'
-              placeholderTextColor='gray'
+              placeholder="Lugar"
+              placeholderTextColor="gray"
               autoCorrect={false}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
 
             <TextInput
               onChangeText={(value) => onChange(value, 'eveClave')}
               value={eveClave}
               style={{ ...globalStyles.input }}
-              placeholder='EveClave'
-              placeholderTextColor='gray'
+              placeholder="EveClave"
+              placeholderTextColor="gray"
               autoCorrect={false}
-              autoCapitalize='none'
-              keyboardType='numeric'
+              autoCapitalize="none"
+              keyboardType="numeric"
             />
 
             <CustomButton
               enable={!isValidFields()}
-              text='Agregar concurso'
+              text="Agregar concurso"
               fields={statecurrent}
               handleOnPress={() => addContest()}
             />
