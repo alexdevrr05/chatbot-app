@@ -20,7 +20,7 @@ import { globalStyles } from '../constants/theme';
 import { useForm } from '../hooks/useForm';
 
 import CustomButton from '../components/CustomButton';
-import Slider from '../components/Slider'
+import CustomSlider from '../components/Slider';
 import DatePicker from '../components/DatePicker';
 import useDatePicker from '../hooks/useDatePicker';
 
@@ -95,17 +95,15 @@ const TalleresScreen = ({ navigation }) => {
               autoCapitalize="none"
               keyboardType="text"
             />
-            <Slider
-              style={{ width: '100%', marginTop: 20 }}
+            <CustomSlider
+              Label='Cupos'
+              value='Cupos'
               minimumValue={5}
               maximumValue={100}
-              step={5}
-              minimumTrackTintColor="#007AFF"
-              maximumTrackTintColor="#007AFF"
-              thumbTintColor="#007AFF"
-              value={talCupo}
-              onValueChange={(value) => onChange(value, 'talCupo')}
+              OnChange={onChange}
+              TagChange='talCupo'
             />
+
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'talDias')}
