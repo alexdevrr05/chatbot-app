@@ -108,8 +108,8 @@ export const globalStyles = StyleSheet.create({
   },
 
   input: {
-    borderWidth: 1,
-    borderColor: '#D3D3D3',
+    borderWidth: 1.5,
+    borderColor: 'black',
     height: 'auto',
     borderRadius: 4,
     paddingVertical: 10,
@@ -121,23 +121,26 @@ export const globalStyles = StyleSheet.create({
   dropdown: {
     backgroundColor: 'white',
     height: 50,
-    borderColor: 'gray',
-    borderWidth: 0.5,
-    borderRadius: 8,
+    borderColor: 'black',
+    borderWidth: 1.5,
+    borderRadius: 4,
     paddingHorizontal: 8,
     marginVertical: 8,
   },
 
   dropdownPlaceholderStyle: {
     fontSize: 16,
+    color: 'gray',
   },
 
-  slider: {
-    borderWidth: 1,
-    borderColor: '#D3D3D3',
+  slider:{
+    borderWidth: 1.5,
+    borderColor: 'black',
     height: 'auto',
     borderRadius: 4,
     paddingVertical: 10,
+    paddingHorizontal: 15,
+    marginVertical: 10,
     backgroundColor: 'white',
   },
 
@@ -168,5 +171,35 @@ export const globalStyles = StyleSheet.create({
     paddingRight: 10,
     top: 15,
     fontSize: 10,
+  },
+
+  sliderText: {
+    color: 'gray'
+  },
+
+  loginContainer:{
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+
+  loginHeader: {
+    fontSize: 24,
+    color: 'black',
+    fontWeight: 'bold',
+  },
+
+  loginContainerLogoTec: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 200,
+    height: 200,
+  },
+
+  loginLogoTec: {
+    position: 'absolute',
+    width: '75%',
+    height: '67%',
   },
 });

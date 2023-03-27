@@ -128,20 +128,13 @@ const ConferenciasScreen = ({ navigation }) => {
             {/*TODO> SLIDER*/}
             <CustomSlider
               Label='Duración'
+              value='Minutos'
+              minimumValue={0}
+              maximumValue={180}
               OnChange={onChange}
               TagChange='duration'
             />
 
-            <TextInput
-              onChangeText={(value) => onChange(value, 'duration')}
-              value={duration}
-              style={{ ...globalStyles.input }}
-              placeholder='Duración'
-              placeholderTextColor='gray'
-              autoCorrect={false}
-              autoCapitalize='none'
-              keyboardType='text'
-            />
 
             <CustomDropdown
               Placeholder='Status de la conferencia'

@@ -15,6 +15,7 @@ import UsuariosScreen from '../screens/UsuariosScreen';
 import AsignaConcursosScreen from '../screens/AsignaConcursosScreen';
 import AsignaTallConfScreen from '../screens/AsignaTallConfScreen';
 import AsignaTallScreen from '../screens/AsignaTallScreen';
+import LoginScreen from "../screens/LoginScreen";
 
 const StackNavigatior = () => {
   const Stack = createStackNavigator();
@@ -28,6 +29,7 @@ const StackNavigatior = () => {
         },
       }}
     >
+      <Stack.Screen name='Login' component={LoginScreen}/>
       <Stack.Screen name='HomeScreen' component={HomeScreen} />
       <Stack.Screen
         name='ColaboradoresScreen'
