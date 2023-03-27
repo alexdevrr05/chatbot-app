@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';

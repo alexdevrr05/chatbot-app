@@ -17,6 +17,7 @@ import {
 import { globalStyles } from '../constants/theme';
 import { useForm } from '../hooks/useForm';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import Header from '../components/Header';
 
 const listConferenceSites = [
   { label: 'Audiovisual', value: 1 },
@@ -40,7 +41,7 @@ const listStatus = [
   { label: 'Inactivo', value: 3 },
   { label: 'Finalizado', value: 4 },
 ];
-const ConferenciasScreen = () => {
+const ConferenciasScreen = ({ navigation }) => {
   const { top } = useSafeAreaInsets();
 
   const { onChange, onReset, statecurrent } = useForm({
@@ -88,6 +89,7 @@ const ConferenciasScreen = () => {
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={{ marginTop: top + 20, marginHorizontal: 20 }}>
+            <Header onPressLeft={() => navigation.goBack()} />
             <Text style={globalStyles.h1}>Agregar conferencia</Text>
 
             <TextInput

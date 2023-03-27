@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
   ScrollView,
@@ -19,6 +18,7 @@ import { colors } from '../themes/appTheme';
 
 import CustomDropdown from '../components/Dropdown';
 import CustomButton from '../components/CustomButton';
+import Header from '../components/Header';
 
 const listRoles = [
   { label: 'Profesor', value: 1 },
@@ -101,68 +101,69 @@ const ColaboradoresScreen = ({ navigation }) => {
         <ScrollView>
           <View style={{ marginTop: top + 20, marginHorizontal: 20 }}>
             {/* name apellidoP apellidoM nomina rol1 */}
+            <Header onPressLeft={() => navigation.goBack()} />
             <Text style={globalStyles.h1}>Colaboradores</Text>
             <TextInput
               style={{ ...styles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'nombre')}
-              placeholder="Nombre"
-              placeholderTextColor="gray"
+              placeholder='Nombre'
+              placeholderTextColor='gray'
               autoCorrect={false}
               value={nombre}
-              autoCapitalize="none"
-              keyboardType="text"
+              autoCapitalize='none'
+              keyboardType='text'
             />
             <TextInput
               style={{ ...styles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'apellidoP')}
-              placeholder="Apellido paterno"
-              placeholderTextColor="gray"
+              placeholder='Apellido paterno'
+              placeholderTextColor='gray'
               autoCorrect={false}
               value={apellidoP}
-              autoCapitalize="none"
-              keyboardType="text"
+              autoCapitalize='none'
+              keyboardType='text'
             />
             <TextInput
               style={{ ...styles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'apellidoM')}
-              placeholder="Apellido materno"
-              placeholderTextColor="gray"
+              placeholder='Apellido materno'
+              placeholderTextColor='gray'
               autoCorrect={false}
               value={apellidoM}
-              autoCapitalize="none"
-              keyboardType="text"
+              autoCapitalize='none'
+              keyboardType='text'
             />
             <TextInput
               style={{ ...styles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'nomina')}
-              placeholder="Nomina"
-              placeholderTextColor="gray"
+              placeholder='Nomina'
+              placeholderTextColor='gray'
               autoCorrect={false}
               value={nomina}
-              autoCapitalize="none"
-              keyboardType="numeric"
+              autoCapitalize='none'
+              keyboardType='numeric'
             />
 
             <CustomDropdown
-              Placeholder="Rol"
+              Placeholder='Rol'
               Data={listRoles}
               OnChange={onChange}
-              TagChange="rol1"
+              TagChange='rol1'
             />
 
             <TextInput
               style={{ ...styles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'rol1')}
-              placeholder="Rol"
-              placeholderTextColor="gray"
+              placeholder='Rol'
+              placeholderTextColor='gray'
               autoCorrect={false}
               value={rol1}
-              autoCapitalize="none"
-              keyboardType="text"
+              autoCapitalize='none'
+              keyboardType='text'
             />
             <CustomButton
               enable={!isValidFields()}
-              text="Agregar colaborador"
+              text='Agregar colaborador'
               fields={statecurrent}
               handleOnPress={() => addContest()}
             />

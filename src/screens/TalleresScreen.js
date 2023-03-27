@@ -23,6 +23,7 @@ import CustomButton from '../components/CustomButton';
 import CustomSlider from '../components/Slider';
 import DatePicker from '../components/DatePicker';
 import useDatePicker from '../hooks/useDatePicker';
+import Header from '../components/Header';
 
 const TalleresScreen = ({ navigation }) => {
   const { top } = useSafeAreaInsets();
@@ -64,6 +65,7 @@ const TalleresScreen = ({ navigation }) => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView>
           <View style={{ marginTop: top + 20, marginHorizontal: 20 }}>
+          <Header onPressLeft={() => navigation.goBack()} />
             <Text style={globalStyles.h1}>Talleres</Text>
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}

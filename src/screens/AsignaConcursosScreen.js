@@ -15,42 +15,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { globalStyles } from '../constants/theme';
 import { useForm } from '../hooks/useForm';
 import CustomButton from '../components/CustomButton';
-import CustomDropdown from '../components/Dropdown';
-
-const listRoles = [
-  { label: 'Profesor', value: 1 },
-  { label: 'Asistente', value: 2 },
-  { label: 'Administrativo', value: 3 },
-  { label: 'Operativo', value: 4 },
-  { label: 'Jefe de division', value: 5 },
-  { label: 'Invitado', value: 6 },
-  { label: 'Proveedor', value: 7 },
-  { label: 'Ejecutivo', value: 8 },
-];
-
-const listAsesores = [
-  { label: 'Adolfo Vazquez', value: 1},
-  { label: 'Martin Villalobos', value: 2},
-  { label: 'Romel Hernandez', value: 3},
-  { label: 'Lizbeth Martinez', value: 4},
-  { label: 'Raul Arzeta', value: 5},
-  { label: 'Gustavo Viera', value: 6},
-];
-
-const listConcurso = [
-  { label: 'Programacion', value: 1},
-  { label: 'Robotica', value: 2},
-  { label: 'Ciberseguridad', value: 3},
-  { label: 'Desarrollo Web', value: 4},
-  { label: 'Redes Neuronales', value: 5},
-];
-
-const listParticipanteId = [
-  { label: '190116417', value: 1},
-  { label: '190556321', value: 2},
-  { label: '200012365', value: 3},
-  { label: '190632121', value: 4},
-];
+import Header from '../components/Header';
 
 const AsignaConcursosScreen = ({ navigation }) => {
   const { top } = useSafeAreaInsets();
@@ -98,6 +63,7 @@ const AsignaConcursosScreen = ({ navigation }) => {
               paddingTop: 5,
             }}
           >
+            <Header onPressLeft={() => navigation.goBack()} />
             <Text
               style={{
                 ...globalStyles.title,

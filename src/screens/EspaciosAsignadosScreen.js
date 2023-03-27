@@ -6,8 +6,9 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useForm } from '../hooks/useForm';
 import { globalStyles } from '../constants/theme';
 import CustomButton from '../components/CustomButton';
+import Header from '../components/Header';
 
-const EspaciosAsignadosScreen = () => {
+const EspaciosAsignadosScreen = ({ navigation }) => {
   const { top } = useSafeAreaInsets();
 
   const {onChange, onReset, statecurrent} = useForm({
@@ -38,7 +39,7 @@ const EspaciosAsignadosScreen = () => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={{ marginTop: top + 20, marginHorizontal: 20 }}>
-              
+              <Header onPressLeft={() => navigation.goBack()} /> 
               <Text style={globalStyles.h1}> Espacios asignados</Text>
               
               <TextInput
