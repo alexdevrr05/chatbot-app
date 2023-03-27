@@ -16,6 +16,7 @@ import CustomButton from '../components/CustomButton';
 import CustomDropdown from '../components/Dropdown';
 import DatePicker from '../components/DatePicker';
 import useDatePicker from '../hooks/useDatePicker';
+import Header from '../components/Header';
 
 const listStatus = [
   { label: 'Activo', value: 1 },
@@ -24,7 +25,7 @@ const listStatus = [
   { label: 'Finalizado', value: 4 },
 ];
 
-const EventosScreen = () => {
+const EventosScreen = ({ navigation }) => {
   const { top } = useSafeAreaInsets();
 
   const { date } = useDatePicker();
@@ -67,6 +68,7 @@ const EventosScreen = () => {
       >
         <TouchableWithoutFeedback>
           <View style={{ marginTop: top + 20, marginHorizontal: 20 }}>
+          <Header onPressLeft={() => navigation.goBack()} />
             <Text style={globalStyles.h1}> Eventos </Text>
 
             <TextInput

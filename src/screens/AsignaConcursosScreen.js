@@ -16,6 +16,7 @@ import { globalStyles } from '../constants/theme';
 import { useForm } from '../hooks/useForm';
 
 import CustomButton from '../components/CustomButton';
+import Header from '../components/Header';
 
 const AsignaConcursosScreen = ({ navigation }) => {
   const { top } = useSafeAreaInsets();
@@ -63,6 +64,7 @@ const AsignaConcursosScreen = ({ navigation }) => {
               paddingTop: 5,
             }}
           >
+            <Header onPressLeft={() => navigation.goBack()} />
             <Text
               style={{
                 ...globalStyles.title,

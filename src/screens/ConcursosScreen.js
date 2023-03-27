@@ -15,8 +15,9 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { globalStyles } from '../constants/theme';
 import { useForm } from '../hooks/useForm';
+import Header from '../components/Header';
 
-const ConcursosScreen = () => {
+const ConcursosScreen = ({ navigation }) => {
   const { top } = useSafeAreaInsets();
 
   const { date } = useDatePicker();
@@ -88,20 +89,14 @@ const ConcursosScreen = () => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView>
           <View style={{ marginTop: top + 20, marginHorizontal: 20 }}>
+          <Header onPressLeft={() => navigation.goBack()} />
             <Text style={globalStyles.h1}>Agregar concurso</Text>
 
             <TextInput
               onChangeText={(value) => onChange(value, 'conClave')}
               value={conClave}
               style={{ ...globalStyles.input, color: 'black' }}
-              placeholder="conClav <View
-              style={{
-                ...globalStyles.globalBackground,
-                ...globalStyles.globalMargin,
-                marginTop: top + 20,
-              }}
-            >
-              e"
+              placeholder="conClave"
               placeholderTextColor="gray"
               autoCorrect={false}
               autoCapitalize="none"

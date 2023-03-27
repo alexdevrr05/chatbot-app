@@ -5,8 +5,9 @@ import { View, Text, TextInput, ScrollView, KeyboardAvoidingView, TouchableWitho
 import { useForm } from '../hooks/useForm';
 import { globalStyles } from '../constants/theme';
 import CustomButton from '../components/CustomButton';
+import Header from '../components/Header';
 
-const ParticipantesScreen = () => {
+const ParticipantesScreen = ({ navigation }) => {
   const { top } = useSafeAreaInsets();
 
   const { onChange, onReset, statecurrent } = useForm({
@@ -63,7 +64,7 @@ const ParticipantesScreen = () => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={{marginVertical: top + 20, marginHorizontal: 20 }}>
-            
+            <Header onPressLeft={() => navigation.goBack()} /> 
             <Text style={globalStyles.h1}> Nuevo participante </Text>
 
             <TextInput

@@ -7,7 +7,6 @@ import {
   ScrollView,
   Text,
   TextInput,
-  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
@@ -17,6 +16,7 @@ import { globalStyles } from '../constants/theme';
 import { useForm } from '../hooks/useForm';
 
 import CustomButton from '../components/CustomButton';
+import Header from '../components/Header';
 
 const PresentadoresScreen = ({ navigation }) => {
   const { top } = useSafeAreaInsets();
@@ -72,6 +72,7 @@ const PresentadoresScreen = ({ navigation }) => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <ScrollView>
           <View style={{ marginTop: top + 20, marginHorizontal: 20 }}>
+            <Header onPressLeft={() => navigation.goBack()} />
             <Text style={globalStyles.h1}>Presentadores</Text>
 
             <TextInput
