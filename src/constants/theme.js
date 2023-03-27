@@ -175,5 +175,31 @@ export const globalStyles = StyleSheet.create({
 
   sliderText: {
     color: 'gray'
-  }
+  },
+
+  loginContainer:{
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+
+  loginHeader: {
+    fontSize: 24,
+    color: 'black',
+    fontWeight: 'bold',
+  },
+
+  loginContainerLogoTec: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 200,
+    height: 200,
+  },
+
+  loginLogoTec: {
+    position: 'absolute',
+    width: '75%',
+    height: '67%',
+  },
 });
