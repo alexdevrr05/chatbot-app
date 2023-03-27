@@ -1,6 +1,4 @@
-import React from 'react';
 import {
-  // Image,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -10,6 +8,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
+  ScrollView,
 } from 'react-native';
 
 import { globalStyles, SIZES } from '../constants/theme';
@@ -17,7 +16,9 @@ import { useForm } from '../hooks/useForm';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useState } from 'react';
 import { colors } from '../themes/appTheme';
+
 import CustomDropdown from '../components/Dropdown';
+import CustomButton from '../components/CustomButton';
 
 const listRoles = [
   { label: 'Profesor', value: 1 },
@@ -92,145 +93,85 @@ const ColaboradoresScreen = ({ navigation }) => {
   };
 
   return (
-    <View
-      style={{
-        ...globalStyles.globalBackground,
-        ...globalStyles.globalMargin,
-        marginTop: top + 20,
-      }}
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={{ flex: 1 }}
     >
-      {/* Es un componente que resuelve el problema común de 
-      las vistas que necesitan moverse fuera del camino del teclado virtual. 
-      Puede ajustar automáticamente su altura, 
-      posición o relleno inferior en función de la altura del teclado. */}
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          {/* OnFocus input */}
-          <View
-            style={{
-              ...globalStyles.globalMargin,
-              backgroundColor: 'white',
-              justifyContent: 'center',
-              paddingTop: 5,
-            }}
-          >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView>
+          <View style={{ marginTop: top + 20, marginHorizontal: 20 }}>
             {/* name apellidoP apellidoM nomina rol1 */}
-            <Text
-              style={{
-                ...globalStyles.title,
-                fontWeight: 'bold',
-                textAlign: 'center',
-              }}
-            >
-              Colaboradores
-            </Text>
+            <Text style={globalStyles.h1}>Colaboradores</Text>
             <TextInput
               style={{ ...styles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'nombre')}
-              placeholder='Nombre'
-              placeholderTextColor='gray'
+              placeholder="Nombre"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={nombre}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
             <TextInput
               style={{ ...styles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'apellidoP')}
-              placeholder='Apellido paterno'
-              placeholderTextColor='gray'
+              placeholder="Apellido paterno"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={apellidoP}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
             <TextInput
               style={{ ...styles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'apellidoM')}
-              placeholder='Apellido materno'
-              placeholderTextColor='gray'
+              placeholder="Apellido materno"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={apellidoM}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
             <TextInput
               style={{ ...styles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'nomina')}
-              placeholder='Nomina'
-              placeholderTextColor='gray'
+              placeholder="Nomina"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={nomina}
-              autoCapitalize='none'
-              keyboardType='numeric'
+              autoCapitalize="none"
+              keyboardType="numeric"
             />
 
             <CustomDropdown
-              Placeholder='Rol'
+              Placeholder="Rol"
               Data={listRoles}
               OnChange={onChange}
-              TagChange='rol1'
+              TagChange="rol1"
             />
 
             <TextInput
               style={{ ...styles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'rol1')}
-              placeholder='Rol'
-              placeholderTextColor='gray'
+              placeholder="Rol"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={rol1}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
-
-            {/* <TextInput
-              style={{ ...styles.input, color: 'black' }}
-              onChangeText={(value) => onChange(value, 'password')}
-              placeholder='Password'
-              value={password}
-              placeholderTextColor='gray'
-              autoCorrect={false}
-              autoCapitalize='none'
-              // It used so that the password is not displayed
-              secureTextEntry={true}
-            /> */}
+            <CustomButton
+              enable={!isValidFields()}
+              text="Agregar colaborador"
+              fields={statecurrent}
+              handleOnPress={() => addContest()}
+            />
           </View>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
 
-      {/* Contenedor forgot pass & signIn button */}
-      <View
-        style={{
-          ...globalStyles.globalMargin,
-          width: '100%',
-          alignItems: 'center',
-        }}
-      >
-        <Text style={{ color: 'red' }}>{showError !== '' && showError}</Text>
-
-        {/* <TouchableOpacity>
-          <Text style={styles.forgotPassword}>Forgot password?</Text>
-        </TouchableOpacity> */}
-
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-          <TouchableOpacity
-            // disabled={nombre === '' || apellidoP === ''}
-            disabled={!isValidFields()}
-            style={
-              !isValidFields() ? styles.btnSignInDisabled : styles.btnSignIn
-            }
-            onPress={() =>
-              onClickSignIn(nombre, apellidoP, apellidoM, nomina, rol1)
-            }
-          >
-            {/* onPress={() => navigation.navigate('SlideScreen')}> */}
-            <Text style={styles.textSignIn}>Sign In</Text>
-          </TouchableOpacity>
-        </TouchableWithoutFeedback>
-      </View>
-    </View>
+          <View style={{ height: 100 }} />
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 

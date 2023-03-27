@@ -4,6 +4,7 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   Platform,
+  ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
@@ -64,162 +65,123 @@ const PresentadoresScreen = ({ navigation }) => {
   };
 
   return (
-    <View
-      style={{
-        ...globalStyles.globalBackground,
-        ...globalStyles.globalMargin,
-        marginTop: top + 20,
-      }}
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={{ flex: 1 }}
     >
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          {/* OnFocus input */}
-          <View
-            style={{
-              ...globalStyles.globalMargin,
-              backgroundColor: 'white',
-              justifyContent: 'center',
-              paddingTop: 5,
-            }}
-          >
-            <Text
-              style={{
-                ...globalStyles.title,
-                fontWeight: 'bold',
-                textAlign: 'center',
-              }}
-            >
-              Presentadores
-            </Text>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView>
+          <View style={{ marginTop: top + 20, marginHorizontal: 20 }}>
+            <Text style={globalStyles.h1}>Presentadores</Text>
+
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'nombre')}
-              placeholder='Nombre'
-              placeholderTextColor='gray'
+              placeholder="Nombre"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={nombre}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'apePat')}
-              placeholder='ApePat'
-              placeholderTextColor='gray'
+              placeholder="ApePat"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={apePat}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'apeMat')}
-              placeholder='ApeMat'
-              placeholderTextColor='gray'
+              placeholder="ApeMat"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={apeMat}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'correo')}
-              placeholder='Correo'
-              placeholderTextColor='gray'
+              placeholder="Correo"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={correo}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'direccion')}
-              placeholder='Direccion'
-              placeholderTextColor='gray'
+              placeholder="Direccion"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={direccion}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'telefono')}
-              placeholder='Telefono'
-              placeholderTextColor='gray'
+              placeholder="Telefono"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={telefono}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'grado')}
-              placeholder='Grado'
-              placeholderTextColor='gray'
+              placeholder="Grado"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={grado}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'empresa')}
-              placeholder='Empresa'
-              placeholderTextColor='gray'
+              placeholder="Empresa"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={empresa}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'especialidad')}
-              placeholder='Especialidad'
-              placeholderTextColor='gray'
+              placeholder="Especialidad"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={especialidad}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
             <TextInput
               style={{ ...globalStyles.input, color: 'black' }}
               onChangeText={(value) => onChange(value, 'clave')}
-              placeholder='Clave'
-              placeholderTextColor='gray'
+              placeholder="Clave"
+              placeholderTextColor="gray"
               autoCorrect={false}
               value={clave}
-              autoCapitalize='none'
-              keyboardType='text'
+              autoCapitalize="none"
+              keyboardType="text"
             />
+
+            <CustomButton enable={!isValidFields()} text="Crear presentador" />
           </View>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
 
-      {/* Contenedor forgot pass & signIn button */}
-      <View
-        style={{
-          ...globalStyles.globalMargin,
-          width: '100%',
-          alignItems: 'center',
-        }}
-      >
-        <Text style={{ color: 'red' }}>{showError !== '' && showError}</Text>
-
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-          <TouchableOpacity
-            disabled={!isValidFields()}
-            onPress={() =>
-              // onClickSignIn()
-              console.log('hello world from my new comment')
-            }
-          >
-            <CustomButton enable={!isValidFields()} text='Crear presentador' />
-          </TouchableOpacity>
-        </TouchableWithoutFeedback>
-      </View>
-    </View>
+          <View style={{ height: 200 }} />
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 
